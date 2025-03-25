@@ -5,7 +5,7 @@ poetry install
 
 # Usage
 ```bash
-poetry run python src/01.py 
+poetry run python src/00.py 
 ```
 
 # Tutorial
