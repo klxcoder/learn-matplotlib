@@ -11,6 +11,11 @@ def main():
             x = math.floor(x)
             y = math.floor(y)
             print(x, y)
+
+            # Get the background color of the figure
+            background_color = fig.get_facecolor()
+            print(background_color)
+
             fig.canvas.draw()  # Redraw the canvas to show the new point
 
     ax.set_xlim(0, 3)
