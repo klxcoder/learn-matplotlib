@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 import math
 
 def main():
@@ -14,7 +15,11 @@ def main():
 
             # Get the background color of the figure
             background_color = fig.get_facecolor()
-            print(background_color)
+
+            # Create a new rectangle with the background color to cover the area
+            clear_rect = Rectangle((x, y), 1, 1, facecolor=background_color, edgecolor=background_color)
+
+            print(clear_rect)
 
             fig.canvas.draw()  # Redraw the canvas to show the new point
 
