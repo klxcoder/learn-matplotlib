@@ -1,6 +1,6 @@
 # Install dependencies
 ```bash
-poetry install
+poetry install --no-root
 ```
 
 # Usage
