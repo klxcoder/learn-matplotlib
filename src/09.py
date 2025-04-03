@@ -6,7 +6,7 @@ def generate_random_color():
 
 def main():
     # Create a 3x3 grid of subplots
-    fig, axes = plt.subplots(3, 3, sharex=True, sharey=True)
+    fig, axes = plt.subplots(3, 3)
 
     def on_click(event): # type: ignore
         if event.inaxes:
