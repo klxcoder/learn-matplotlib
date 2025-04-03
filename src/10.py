@@ -2,7 +2,14 @@ import matplotlib.pyplot as plt
 
 def main():
     # Set up the plot
-    _, ax = plt.subplots()
+    fig, ax = plt.subplots()
+
+    def onclick(event): # type: ignore
+        if event.inaxes == ax:  # Check if the click occurred within the axes
+            x, y = event.xdata, event.ydata
+            print(x, y)
+            fig.canvas.draw()  # Redraw the canvas to show the new point
+
     ax.set_xlim(0, 3)
     ax.set_ylim(0, 3)
     ax.set_aspect('equal')  # Make sure the grid is square
@@ -20,6 +27,8 @@ def main():
     for i in range(3):
         for j in range(3):
             ax.text(i + 0.5, j + 0.5, "X" if (j * 3 + i + 1) % 2 else "O", ha='center', va='center', fontsize=30)
+
+    fig.canvas.mpl_connect('button_press_event', onclick)
 
     plt.title("Tic-Tac-Toe Board")
     plt.show()
