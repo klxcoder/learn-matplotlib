@@ -18,7 +18,7 @@ ax.plot([2, 2], [0, 3], 'k-', linewidth=2)
 # Optional: Add numbers to the cells for reference
 for i in range(3):
     for j in range(3):
-        ax.text(i + 0.5, j + 0.5, str(j * 3 + i + 1), ha='center', va='center', fontsize=30)
+        ax.text(i + 0.5, j + 0.5, "X" if (j * 3 + i + 1) % 2 else "O", ha='center', va='center', fontsize=30)
 
 plt.title("Tic-Tac-Toe Board")
 plt.show()
