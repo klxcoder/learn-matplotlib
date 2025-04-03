@@ -6,12 +6,17 @@ def main():
     # Set up the plot
     fig, ax = plt.subplots()
 
+
     def onclick(event): # type: ignore
         if event.inaxes == ax:  # Check if the click occurred within the axes
             x, y = event.xdata, event.ydata
             x = math.floor(x)
             y = math.floor(y)
-            print(x, y)
+
+            # Remove all existing text objects in the clicked cell
+            for text in ax.texts:
+                if math.floor(text.get_position()[0]) == x and math.floor(text.get_position()[1]) == y:
+                    text.set_text("O" if text.get_text() == "X" else "X")
 
             # Get the background color of the figure
             background_color = fig.get_facecolor()
@@ -19,7 +24,8 @@ def main():
             # Create a new rectangle with the background color to cover the area
             clear_rect = Rectangle((x, y), 1, 1, facecolor=background_color, edgecolor=background_color)
 
-            print(clear_rect)
+            # Add the clearing rectangle to the axes
+            ax.add_patch(clear_rect)
 
             fig.canvas.draw()  # Redraw the canvas to show the new point
 
