@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import math
 
 def main():
     # Set up the plot
@@ -7,6 +8,8 @@ def main():
     def onclick(event): # type: ignore
         if event.inaxes == ax:  # Check if the click occurred within the axes
             x, y = event.xdata, event.ydata
+            x = math.floor(x)
+            y = math.floor(y)
             print(x, y)
             fig.canvas.draw()  # Redraw the canvas to show the new point
 
