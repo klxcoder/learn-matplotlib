@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+from numpy.typing import NDArray
 from collections import deque
 
 maze_str = """
@@ -21,11 +22,11 @@ maze_str = """
 A      ######################
 """
 
-maze = np.array([[1 if char == '#' else 0 for char in line] for line in maze_str.strip().split('\n')])
-start = (15, 0)  # 'A'
-end = (8, 13)    # 'B'
+maze: NDArray[np.character] = np.array([[1 if char == '#' else 0 for char in line] for line in maze_str.strip().split('\n')])
+start: tuple[int, int] = (15, 0)  # 'A'
+end: tuple[int, int] = (8, 13)    # 'B'
 
-def bfs(maze, start, end):
+def bfs(maze: NDArray[np.character], start: tuple[int, int], end: tuple[int, int]) -> (list[tuple[int, int]] | None):
     queue = deque([(start, [start])])
     visited = {start}
     while queue:
@@ -37,7 +38,6 @@ def bfs(maze, start, end):
             if 0 <= nx < maze.shape[0] and 0 <= ny < maze.shape[1] and maze[nx, ny] == 0 and (nx, ny) not in visited:
                 visited.add((nx, ny))
                 queue.append(((nx, ny), path + [(nx, ny)]))
-    return []
 
 path = bfs(maze, start, end)
 
